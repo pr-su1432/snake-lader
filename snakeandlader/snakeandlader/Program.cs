@@ -7,7 +7,8 @@ namespace snakeandlader
         public static void Main(string[] args)
         {
             Snakeandlader.Snakeandlader value = new Snakeandlader.Snakeandlader();
-            value.Position();
+            value.diceroll();
+            
         }
     }
 

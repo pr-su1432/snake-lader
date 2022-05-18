@@ -10,9 +10,11 @@ namespace Snakeandlader
     {
 
         int startpositon = 0, playerposition = 0;
-        public void Position()
+        Random random = new Random();
+        public void diceroll()
         {
-            Console.WriteLine("Initial  position of player is " + playerposition);
+            int diceno = random.Next(1, 6);
+            Console.WriteLine("dice value of player is " + diceno);
 
         }
 
