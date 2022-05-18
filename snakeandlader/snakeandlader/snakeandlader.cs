@@ -28,10 +28,10 @@ namespace Snakeandlader
                         Console.WriteLine("Player got noPlay Option");
                         break;
                     case snake:
-                        playerposition -= diceroll();
+                        playerposition -= diceNo;
                         break;
                     case ladder:
-                        playerposition += diceroll();
+                        playerposition += diceNo;
                         break;
                     default:
                         break;
@@ -39,15 +39,32 @@ namespace Snakeandlader
                 if (playerposition < 0)
                 {
                     playerposition = 0;
+                    Console.WriteLine("Player present Position is at " + playerposition);
                 }
-
-
-
+                if (playerposition > 100)
+                {
+                    playerposition -= diceNo;
+                    while (playerposition < 100)
+                    {
+                        if (diceNo == (100 - playerposition))
+                        {
+                            playerposition = 100;
+                            Console.WriteLine("Player Won the Game");
+                        }
+                        else
+                        { 
+                            continue;
+                        }
+                    }
+                }
+                Console.WriteLine("Player present Position is at {0}\n", playerposition);
             }
-            Console.WriteLine("Player rolls the dice {0} time to reach Position {1}\n", var, playerposition);
         }
     }
 }
+                
 
+
+     
 
 
