@@ -8,63 +8,71 @@ namespace Snakeandlader
 {
     internal class Snakeandlader
     {
+        int position1 = 0, position2 = 0, count = 0;
+        int Player1, Player2;
+        public void rollDice()
+        {
 
-        public int startpositon = 0, playerposition = 0;
-        const int noPlay = 0, snake = 1, ladder = 2;
-        Random random = new Random();
-        public void diceroll()
-        {
-            int diceNo = random.Next(1, 6);
-            return diceNo;
-        }
-        public void dicerollgame()
-        {
-            while (playerposition < 100)
+            Random random = new Random();
+            while (position1 != 100 && position2 != 100)
             {
-                switch (random.Next(0, 3))
+                Player1 = random.Next(0, 7);
+                Player2 = random.Next(0, 7);
+                int check1 = random.Next(0, 3);
+                int check2 = random.Next(0, 3);
+                count++;
+
+                switch (check1)
                 {
-                    case noPlay:
-                        playerposition += 0;
-                        Console.WriteLine("Player got noPlay Option");
+                    case 0:
                         break;
-                    case snake:
-                        playerposition -= diceNo;
+                    case 1:
+                        position1 += Player1;
                         break;
-                    case ladder:
-                        playerposition += diceNo;
-                        break;
-                    default:
+                    case 2:
+                        position1 -= Player1;
                         break;
                 }
-                if (playerposition < 0)
+
+                if (position1 < 0)
+                    position1 = 0;
+                if (position1 > 100)
+                    position1 -= Player1;
+
+                switch (check2)
                 {
-                    playerposition = 0;
-                    Console.WriteLine("Player present Position is at " + playerposition);
+                    case 0:
+                        break;
+                    case 1:
+                        position2 += Player2;
+                        break;
+                    case 2:
+                        position2 -= Player2;
+                        break;
                 }
-                if (playerposition > 100)
-                {
-                    playerposition -= diceNo;
-                    while (playerposition < 100)
-                    {
-                        if (diceNo == (100 - playerposition))
-                        {
-                            playerposition = 100;
-                            Console.WriteLine("Player Won the Game");
-                        }
-                        else
-                        { 
-                            continue;
-                        }
-                    }
-                }
-                Console.WriteLine("Player present Position is at {0}\n", playerposition);
+
+                if (position2 < 0)
+                    position2 = 0;
+                if (position2 > 100)
+                    position2 -= Player2;
+
+                Console.WriteLine("Dice roll: " + count + " Position of Player 1: " + position1);
+                Console.WriteLine("Dice roll: " + count + " Position of Player 2: " + position2);
             }
+            if (position1 == 100)
+                Console.WriteLine("Player 1 won the match.");
+            else
+                Console.WriteLine("Player 2 won the match.");
+            Console.WriteLine("Dice rolled for " + count + " no. of time.");
+
         }
     }
 }
-                
 
 
-     
+
+
+
+
 
 
